@@ -63,7 +63,6 @@ function Map({ locations = [], isPolygon = false, center, shapes }) {
   })
 
   useEffect(() => {
-    console.log('run Effect')
     async function runEffect() {
       if (mapRef.current) {
         const map = mapRef.current
