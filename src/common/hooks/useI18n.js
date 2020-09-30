@@ -6,6 +6,6 @@ export default function useI18n() {
 }
 
 export function useLang() {
-  const [lang] = useSelector(state => state.lang.current)
+  const [lang] = useSelector((state) => state.lang.current)
   return lang
 }

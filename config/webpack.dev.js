@@ -9,7 +9,7 @@ const apiServers = {
   prod: 'http://127.0.0.1:3334',
 }
 
-module.exports = env => {
+module.exports = (env) => {
   const apiServer = (env && env.API_SERVER) || process.env.API_SERVER || 'local'
 
   if (!apiServer) {

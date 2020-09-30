@@ -11,7 +11,7 @@ import { PageLayout } from 'common/components'
 import './App.css'
 
 function App() {
-  const isInitialDataLoading = useSelector(state => state.initial.loading)
+  const isInitialDataLoading = useSelector((state) => state.initial.loading)
   const i18n = useI18n()
   const lang = useLang()
 

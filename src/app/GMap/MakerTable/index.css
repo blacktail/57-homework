@@ -5,16 +5,14 @@
 
   :global .ant-table-row {
     td {
-    cursor: pointer;
-
+      cursor: pointer;
     }
   }
 
   :global .ant-table-row:hover {
     td {
       background: #888 !important;
-      color: white
-
+      color: white;
     }
   }
 }

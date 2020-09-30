@@ -1,12 +1,13 @@
 import React from 'react'
 import { Table, Tooltip } from 'antd'
 import { useDispatch, useMemo, useCallback } from 'common/hooks'
-import { toLocaleString } from 'common/utils'
+import { toLocaleString, uniqId } from 'common/utils'
 import { useWindowSize } from 'react-use'
 import styles from './index.css'
 
 function MarkerTable({ locations, isPolygon }) {
   const dispatch = useDispatch()
+  // eslint-disable-next-line no-unused-vars
   const { width, height } = useWindowSize()
   const data = useMemo(() => {
     if (isPolygon) {
@@ -17,7 +18,7 @@ function MarkerTable({ locations, isPolygon }) {
   }, [isPolygon, locations])
 
   const setCenterMarker = useCallback(
-    item => {
+    (item) => {
       dispatch({
         type: 'gmap/setCenterLocation',
         payload: {
@@ -46,12 +47,15 @@ function MarkerTable({ locations, isPolygon }) {
     <Table
       className={styles.table}
       size="small"
-      onRow={record => {
+      onRow={(record) => {
         return {
           onClick: () => {
             setCenterMarker(record)
           },
         }
+      }}
+      rowKey={() => {
+        return uniqId('row')
       }}
       dataSource={data}
       columns={columns}

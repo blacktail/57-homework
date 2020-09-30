@@ -6,7 +6,7 @@ import { ReactComponent as TranslationSVG } from '../../../assets/icons/translat
 import styles from './index.css'
 
 function Footer() {
-  const curLang = useSelector(state => state.lang.current)
+  const curLang = useSelector((state) => state.lang.current)
   const dispatch = useDispatch()
 
   const changeLang = useCallback(() => {

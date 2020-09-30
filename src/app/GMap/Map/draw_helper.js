@@ -4,14 +4,14 @@ import { Modal } from 'antd'
 export function drawPolygon(map, bounds, locations, mapper) {
   let filteredLocations = locations.map(
     mapper ||
-      (location => ({
+      ((location) => ({
         lat: location[0],
         lng: location[1],
       }))
   )
 
   if (bounds) {
-    filteredLocations = filteredLocations.filter(location => {
+    filteredLocations = filteredLocations.filter((location) => {
       return bounds.contains(location)
     })
   }
@@ -60,9 +60,9 @@ export async function drawShapes(map, shapes, dispatch) {
 
     switch (shape?.geometry?.type) {
       case 'MultiPolygon':
-        shape.geometry.coordinates.forEach(coordsArr => {
+        shape.geometry.coordinates.forEach((coordsArr) => {
           resultShapes.push(
-            drawPolygon(map, null, coordsArr[0], location => ({
+            drawPolygon(map, null, coordsArr[0], (location) => ({
               lat: location[1],
               lng: location[0],
             }))
@@ -70,9 +70,9 @@ export async function drawShapes(map, shapes, dispatch) {
         })
         break
       case 'Polygon':
-        shape.geometry.coordinates.forEach(coordsArr => {
+        shape.geometry.coordinates.forEach((coordsArr) => {
           resultShapes.push(
-            drawPolygon(map, null, coordsArr, location => ({
+            drawPolygon(map, null, coordsArr, (location) => ({
               lat: location[1],
               lng: location[0],
             }))

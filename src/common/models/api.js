@@ -5,7 +5,7 @@ import urlJoin from 'url-join'
 
 // global interceptors setup
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     const { url } = config
 
     // append api base path to the url if not present
@@ -23,16 +23,16 @@ axios.interceptors.request.use(
 
     return config
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )
 
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     return response
   },
-  error => {
+  (error) => {
     if (
       (error.config.useGlobalErrorHandler !== false &&
         ((error?.response?.status !== 401 && error?.response?.status !== 403) ||
@@ -51,11 +51,11 @@ axios.interceptors.response.use(
   }
 )
 
-window.addEventListener('unhandledrejection', event => {
+window.addEventListener('unhandledrejection', (event) => {
   event.preventDefault()
   // TODO: add monitoring in the future
   // eslint-disable-next-line
-  console.warn('unhandledrejection', event) 
+  console.warn('unhandledrejection', event)
   // eslint-disable-next-line
   console.warn(event?.reason?.stack)
 })

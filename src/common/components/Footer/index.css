@@ -1,21 +1,21 @@
-  .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 
-  .copyright {
-    font-size: 12px;
-  }
+.copyright {
+  font-size: 12px;
+}
 
-  .lang {
-    font-size: 12px;
-    margin-left: 10px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-  }
+.lang {
+  font-size: 12px;
+  margin-left: 10px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}

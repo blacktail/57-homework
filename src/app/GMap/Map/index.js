@@ -49,7 +49,7 @@ function Map({ locations = [], isPolygon = false, center, shapes }) {
         }
 
         if (shapesRef.current) {
-          shapesRef.current.forEach(poly => {
+          shapesRef.current.forEach((poly) => {
             poly.setOptions({
               fillColor: randomColor(),
             })
@@ -88,7 +88,7 @@ function Map({ locations = [], isPolygon = false, center, shapes }) {
 
         // Clear Shapes
         if (shapesRef.current) {
-          shapesRef.current.forEach(shape => shape.setMap(null))
+          shapesRef.current.forEach((shape) => shape.setMap(null))
           shapesRef.current = null
         }
 
@@ -136,7 +136,7 @@ function Map({ locations = [], isPolygon = false, center, shapes }) {
   )
 }
 
-window.gmapPromise = new Promise(resolve => {
+window.gmapPromise = new Promise((resolve) => {
   if (window.google) {
     resolve()
   } else {

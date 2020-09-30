@@ -2,7 +2,7 @@
 import random from 'lodash.random'
 
 export function sleep(t) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve(), t)
   })
 }

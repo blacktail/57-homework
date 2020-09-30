@@ -1,9 +1,8 @@
 import React from 'react'
-import { useModel, useDispatch, useCallback, useSelector, useState } from 'common/hooks'
+import { useModel, useDispatch, useCallback, useSelector } from 'common/hooks'
 import { PageHeader, Layout, Row, Col, Button, Upload, message } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { open as openShapeFile } from 'shapefile'
-import debounce from 'lodash.debounce'
 import model from './model'
 import Map from './Map'
 import MarkerTable from './MakerTable'
@@ -14,11 +13,11 @@ function GMap() {
   useModel(model)
 
   const dispatch = useDispatch()
-  const locations = useSelector(state => state.gmap.locations)
-  const isPolygon = useSelector(state => state.gmap.isPolygon)
-  const centerLocation = useSelector(state => state.gmap.center)
-  const isMapBusy = useSelector(state => state.gmap.mapBusy)
-  const shapes = useSelector(state => state.gmap.shapes)
+  const locations = useSelector((state) => state.gmap.locations)
+  const isPolygon = useSelector((state) => state.gmap.isPolygon)
+  const centerLocation = useSelector((state) => state.gmap.center)
+  const isMapBusy = useSelector((state) => state.gmap.mapBusy)
+  const shapes = useSelector((state) => state.gmap.shapes)
 
   const generateMarkers = useCallback(() => {
     dispatch({
@@ -27,15 +26,15 @@ function GMap() {
   }, [dispatch])
 
   const finishReadShapes = useCallback(
-    debounce(shapes => {
+    (shapes) => {
       dispatch({
         type: 'gmap/setShapes',
         payload: {
           shapes,
         },
       })
-    }, 1000),
-    []
+    },
+    [dispatch]
   )
 
   return (
@@ -45,10 +44,10 @@ function GMap() {
         title="Google Map Demo"
         extra={
           <Upload
-            beforeUpload={file => {
+            beforeUpload={(file) => {
               const shapes = []
               openShapeFile(file.stream())
-                .then(source =>
+                .then((source) =>
                   source.read().then(function log(result) {
                     if (result.done) {
                       message.success('Read File Success')
@@ -60,7 +59,7 @@ function GMap() {
                     return source.read().then(log)
                   })
                 )
-                .catch(error => {
+                .catch((error) => {
                   console.error(error.stack)
                   message.error('Error occurs when read the shape file, please retry.')
                 })
