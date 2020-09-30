@@ -1,0 +1,20 @@
+.table {
+  :global .ant-table-row:nth-child(even) {
+    background: #e9e9e9;
+  }
+
+  :global .ant-table-row {
+    td {
+    cursor: pointer;
+
+    }
+  }
+
+  :global .ant-table-row:hover {
+    td {
+      background: #888 !important;
+      color: white
+
+    }
+  }
+}
