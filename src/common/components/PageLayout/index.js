@@ -12,7 +12,7 @@ const { Header, Sider, Content } = Layout
 
 const GMap = lazy(() => import(/* webpackChunkName: "user" */ '../../../app/GMap'))
 
-function PageLayout({ history, location }) {
+function PageLayout({ history }) {
   const [collapsed, setCollapsed] = useState(true)
 
   const onToggle = useCallback(() => {
@@ -29,8 +29,6 @@ function PageLayout({ history, location }) {
     [history]
   )
 
-  const defaultSelectedKeys = useMemo(() => [location.pathname.replace('/', '')], [location.pathname])
-
   return (
     <Layout style={{ height: '100%' }}>
       <Sider trigger={null} collapsible collapsed={collapsed} width={260} theme="light">
@@ -42,7 +40,7 @@ function PageLayout({ history, location }) {
           theme="light"
           style={{ borderTop: '1px solid #ccc', height: 'calc(100vh - 90px)', overflow: 'auto', overflowX: 'hidden' }}
           onClick={onMenuClick}
-          defaultSelectedKeys={defaultSelectedKeys}
+          defaultSelectedKeys="gmap"
           defaultOpenKeys="gmap"
         >
           <Menu.Item key="gmap">
@@ -72,7 +70,7 @@ function PageLayout({ history, location }) {
         >
           <Suspense fallback={<Trans>App is loading...</Trans>}>
             <Switch>
-              <Route path="/gmap" component={GMap} />
+              <Route path="/" component={GMap} />
               <Route path="/404" component={NotFound} />
               <Route component={NotFound} />
             </Switch>

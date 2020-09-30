@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root'
 import React, { Suspense } from 'react'
 import { I18nProvider } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
 import enUS from 'antd/es/locale/en_US'
@@ -27,7 +27,6 @@ function App() {
           <Router>
             <Suspense fallback={<Trans>App is loading...</Trans>}>
               <Switch>
-                <Redirect exact from="/" to="/gmap" />
                 <Route component={PageLayout} />
               </Switch>
             </Suspense>
