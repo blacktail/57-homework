@@ -7,10 +7,6 @@ export function sleep(t) {
   })
 }
 
-export function getGravatar(email) {
-  return `https://www.gravatar.com/avatar/${md5(email.toLowerCase().trim())}`
-}
-
 let id = 0
 export function uniqId(prefix = '') {
   const uid = prefix + id
@@ -48,7 +44,6 @@ export function randomColor() {
 
 export default {
   sleep,
-  getGravatar,
   uniqId,
   toLocaleString,
   makeid,

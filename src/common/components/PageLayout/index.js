@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useCallback, useMemo } from 'react'
+import React, { Suspense, lazy, useState, useCallback } from 'react'
 
 import { HomeOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 

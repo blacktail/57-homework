@@ -59,8 +59,7 @@ function GMap() {
                     return source.read().then(log)
                   })
                 )
-                .catch((error) => {
-                  console.error(error.stack)
+                .catch(() => {
                   message.error('Error occurs when read the shape file, please retry.')
                 })
               return false
